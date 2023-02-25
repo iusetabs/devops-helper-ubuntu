@@ -7,7 +7,7 @@ RUN apt-get --assume-yes install curl \
     vim \
     gpg \
     unzip \
-    wget 
+    wget
 
 WORKDIR /home/ubuntu
 
@@ -15,15 +15,10 @@ WORKDIR /home/ubuntu
 COPY installation-scripts installation-scripts
 COPY installAll.sh .
 
-# Install all dependencies 
+# Install all dependencies
 RUN chmod +x ./installation-scripts/*.sh
 RUN chmod +x ./installAll.sh
 RUN ./installAll.sh
 
-EXPOSE 8080
-ENTRYPOINT ["code-server"]
-
-
-
-
-
+EXPOSE 1234
+ENTRYPOINT ["code-server", "--port", "1234"]
